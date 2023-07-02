@@ -11,6 +11,7 @@ export let totalHits;
 let lightbox;
 
 export async function fetchImg(queryImg, page, per_page) {
+    let totalRender = 0;
     let totalHits = 0;
     btnLoad.classList.add('load-more');
         axios({
