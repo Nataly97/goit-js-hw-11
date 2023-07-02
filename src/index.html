@@ -1,14 +1,28 @@
 <!DOCTYPE html>
-<html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Page title</title>
-    <link rel="stylesheet" href="./sass/index.scss" />
-    <script type="module" src="./index.js"></script>
-  </head>
-  <body>
-    <!-- ❗️❗️❗️ Add partials like so for every page -->
-    <include src="./partials/example.html"></include>
-  </body>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <title>Homework 11</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-dark bg-primary">
+    <form class="search-form col-xs-4" id="search-form">
+      <input type="text" name="searchQuery" autocomplete="off" placeholder="Search images..." class="form-control" />
+      <button type="submit" class="btn btn-default">Search</button>
+    </form>
+  </nav>
+  <div class="gallery">
+    <!-- Tarjetas de imágenes -->
+  </div>
+  <button type="button" id="load" class="load-more btn btn-info">Load more</button>
+  <script src="index.js" type="module"></script>
+</body>
+
 </html>

@@ -1,0 +1,67 @@
+
+.btn-info {
+    position: relative;
+    left: 50%;
+    margin: 15px;
+}
+
+.btn:hover {
+    background-color: #5cb85c;
+}
+form {
+    display: inline-block;
+    height: 60px;
+    padding: 10px;
+    margin-left: 350px;
+}
+
+form>input {
+    float: left;
+    margin-bottom: 15px;
+}
+
+form>button {
+    position: relative;
+    border: none;
+    float: right;
+    bottom: 49px;
+    left: 80px;
+}
+
+.gallery {
+    text-align: center;
+}
+
+img {
+    height: 200px;
+    width: 250px;
+}
+
+.info {
+    margin: 15px;
+    text-align: left;
+}
+
+.load-more {
+    display: none;
+    width: 20px;
+}
+
+nav {
+    position: absolute;
+    text-align: center;
+}
+
+.photo-card {
+    display: inline-block;
+    margin: 15px;
+}
+
+.photo-card:hover {
+    border: solid 5px rgba(0, 0, 0, 0.091);
+}
+
+
+
+
+
