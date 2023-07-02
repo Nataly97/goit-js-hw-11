@@ -62,7 +62,7 @@ export async function fetchImg(queryImg, page, per_page) {
                 }
             }
         )
-    // return { totalRender};
+    return { totalRender};
 }
 export { lightbox };
 
