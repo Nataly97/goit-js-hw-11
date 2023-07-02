@@ -1,4 +1,4 @@
-import { fetchImg, btnLoad, totalRender } from "./application";
+import { fetchImg, btnLoad, lightbox } from "./application";
 
 const form = document.querySelector(".search-form");
 
@@ -6,6 +6,7 @@ let arrayBusqueda;
 let inputText;
 let page = 1;
 let per_page = 40;
+let totalRender = 0;
 
 form.addEventListener('submit', (event) => {
     totalRender = 0;
@@ -23,6 +24,6 @@ btnLoad.addEventListener('click', (e) => {
     page += 1;
     btnLoad.classList.add('load-more');
     fetchImg(inputText, page, per_page);
-    // lightbox.refresh();
+    lightbox.refresh();
     btnLoad.classList.remove('load-more');
 })
