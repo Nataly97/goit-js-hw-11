@@ -17,7 +17,7 @@ form.addEventListener('submit', (event) => {
     inputText = arrayBusqueda.join("+");
     page = 1;
     fetchImg(inputText, page, per_page);
-})
+});
 
 btnLoad.addEventListener('click', (e) => {
     e.preventDefault();
@@ -26,4 +26,12 @@ btnLoad.addEventListener('click', (e) => {
     fetchImg(inputText, page, per_page);
     lightbox.refresh();
     btnLoad.classList.remove('load-more');
+    const { height: cardHeight } = document
+        .querySelector(".gallery")
+        .firstElementChild.getBoundingClientRect();
+
+    window.scrollBy({
+        top: cardHeight * 2,
+        behavior: "smooth",
+    });
 })
