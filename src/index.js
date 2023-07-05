@@ -44,7 +44,6 @@ window.addEventListener('scroll', (e) => {
             top: cardHeight * 2,
             behavior: "smooth",
         });
-        console.log(totalHits)
     } else if(totalRender >= totalHits){
         e.stopImmediatePropagation();
     }
