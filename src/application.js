@@ -10,10 +10,7 @@ export const btnLoad = document.querySelector("#load");
 export let totalHits;
 let lightbox;
 
-export async function fetchImg(queryImg, page, per_page) {
-    let totalRender = 0;
-    let totalHits = 0;
-    // btnLoad.classList.add('load-more');
+export async function fetchImg(queryImg, page, per_page, totalRender) {
         axios({
             method:'GET',
             url:`https://${API_URL}?key=${API_KEY}&q=${queryImg}&image_type=photo&orientation=horizontal&safesearch=true&per_page=${per_page}&page=${page}`,
@@ -21,15 +18,13 @@ export async function fetchImg(queryImg, page, per_page) {
         }).then(
             async function (response) {
                 const petitionResult = JSON.parse(response.data)
-                // console.log(petitionResult)
                 totalHits = await petitionResult.totalHits;
                 const render = await petitionResult.hits;
                 if (totalHits === 0) {
                     divGallery.innerHTML = ``;
                     Notiflix.Notify.failure("Sorry, there are no images matching your search query. Please try again.");
-                } else if (totalRender >= totalHits) {
+                } else if (totalHits <= totalRender) {
                     // btnLoad.classList.add('load-more');
-                    // event.stopPropagation();
                     Notiflix.Notify.failure("We're sorry, but you've reached the end of search results.");
                 } else {
                     Notiflix.Notify.success(`Hooray! We found ${totalHits} images.`);

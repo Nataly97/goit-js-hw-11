@@ -1,7 +1,6 @@
-import { fetchImg, btnLoad, lightbox, totalHits } from "./application";
+import { fetchImg, lightbox, totalHits } from "./application";
 
 const form = document.querySelector(".search-form");
-const loadMoreBtn = document.querySelector("#load");
 
 let arrayBusqueda;
 let inputText;
@@ -10,15 +9,47 @@ let per_page = 40;
 let totalRender = 0;
 
 form.addEventListener('submit', (event) => {
-    totalRender = 0;
+    totalRender = per_page;
     event.preventDefault();
     document.querySelector(".gallery").innerHTML = ``;
     const search = document.querySelector(".search-form input").value;
     arrayBusqueda = search.split(" ");
     inputText = arrayBusqueda.join("+");
     page = 1;
-    fetchImg(inputText, page, per_page);
+    fetchImg(inputText, page, per_page, totalRender);
 });
+
+// Función para cargar más imágenes
+const loadMoreImages = () => {
+    page++;
+    totalRender += per_page
+    fetchImg(inputText, page, per_page, totalRender);
+};
+
+// Función para verificar si se llegó al final de la página
+const isAtBottomOfPage = () => {
+    return (window.innerHeight + window.scrollY) >= document.body.offsetHeight;
+};
+
+// Evento de desplazamiento de la página
+window.addEventListener('scroll', (e) => {
+    lightbox.refresh();
+    if (isAtBottomOfPage()) {
+        loadMoreImages();
+        const { height: cardHeight } = document
+            .querySelector(".gallery")
+            .firstElementChild.getBoundingClientRect();
+
+        window.scrollBy({
+            top: cardHeight * 2,
+            behavior: "smooth",
+        });
+        console.log(totalHits)
+    } else if(totalRender >= totalHits){
+        e.stopImmediatePropagation();
+    }
+});
+
 
 // btnLoad.addEventListener('click', (e) => {
 //     e.preventDefault();
@@ -36,30 +67,3 @@ form.addEventListener('submit', (event) => {
 //         behavior: "smooth",
 //     });
 // })
-
-// Función para cargar más imágenes
-const loadMoreImages = () => {
-    page++;
-    fetchImg(inputText, page, per_page);
-};
-
-// Función para verificar si se llegó al final de la página
-const isAtBottomOfPage = () => {
-    return (window.innerHeight + window.scrollY) >= document.body.offsetHeight;
-};
-
-// Evento de desplazamiento de la página
-window.addEventListener('scroll', () => {
-    lightbox.refresh();
-    if (isAtBottomOfPage()) {
-        loadMoreImages();
-        const { height: cardHeight } = document
-            .querySelector(".gallery")
-            .firstElementChild.getBoundingClientRect();
-
-        window.scrollBy({
-            top: cardHeight * 2,
-            behavior: "smooth",
-        });
-    } 
-});
